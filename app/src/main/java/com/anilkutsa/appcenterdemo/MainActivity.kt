@@ -8,12 +8,12 @@ import com.microsoft.appcenter.crashes.Crashes
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        AppCenter.start(application, "277d8b88-0076-48fd-b16e-60ca50f6bf38",
-                Analytics::class.java, Crashes::class.java)
+        AppCenter.start(application, "d403b4e8-de82-442b-86ce-d0862ec94ee6", Analytics::class.java, Crashes::class.java);
 
         calculateButton.setOnClickListener {
             // Crashes.generateTestCrash()
@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 if (retirementAge <= currentAge) {
                     Analytics.trackEvent("wrong_age", properties)
                 }
+                resultTextView.text = "At the current rate of $interestRate%, saving \$$monthly a month you will have \$X by $retirementAge."
             } catch(ex: Exception){
                 Analytics.trackEvent(ex.message)
             }
